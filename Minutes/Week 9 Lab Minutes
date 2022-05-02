@@ -1,0 +1,26 @@
+Meeting date/time: 26th April 2022, 02:00 PM
+Location: Discord/lab
+
+Present: 
+  All
+
+Meeting Purpose: 
+  Meet group, brainstorm ideas for Major Project
+
+Activities:
+  1. Meet group and read through Major Project	
+  2. Brainstorm ideas for major project
+  3. Create a list of modules for our idea 
+  
+  
+Future Plans:
+  Everyone go over datasheets and sample code 
+  Also get an idea of the limitations of the simulation version of the sample code
+  
+############################ LIST OF POSSIBLE MODULES ###################################
+Lidar detection module (check vacancy of booths)
+Gyroscope (which booth being measured)
+Message/number display
+Music booth
+Magnetic trolley detection
+Module for "base" booth detection without customers for reference
