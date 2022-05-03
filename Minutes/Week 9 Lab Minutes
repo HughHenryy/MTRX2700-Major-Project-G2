@@ -19,8 +19,13 @@ Future Plans:
   
 ############################ LIST OF POSSIBLE MODULES ###################################
 Lidar detection module (check vacancy of booths)
-Gyroscope (which booth being measured)
+Gyroscope (which booth being measured), First use servo motors
 Message/number display
 Music booth
 Magnetic trolley detection
 Module for "base" booth detection without customers for reference
+
+
+Higher Level thinking modules
+- Using gyroscope instead of servo motors for position
+- Ideal position someone stands vs slightly off
