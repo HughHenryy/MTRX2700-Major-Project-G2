@@ -1,4 +1,6 @@
-Major project development stages and the modules to add at each stage
+README
+
+############################### Major project development stages and the modules to add at each stage ###################################
 
 Major project development stages:
 	• Detect object presence in front of a stationary lidar 
@@ -19,4 +21,4 @@ Major project development stages:
 		○ Update detection module to play tune when booth is free
 	• Display on PC the current status of every booth and update when a booth empties/gets filled 
 		○ Serial module to interface with PC
-    ○ Python module to display booth status 
+    		○ Python module to display booth status 
