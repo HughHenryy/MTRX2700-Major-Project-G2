@@ -1,1 +1,22 @@
-README FILE
+Major project development stages and the modules to add at each stage
+
+Major project development stages:
+	• Detect object presence in front of a stationary lidar 
+		○ Module to get lidar readings 
+		○ Module to analyse data and decide if object is present (detection module)
+	• Detect objects in front of a rotating lidar 
+		○ Module to move lidar 
+		○ Update detection module to account for lidar orientation 
+	• Increase lidar accuracy by taking multiple measurements in each position and averaging 
+	• Make measurements of orientation more accurate using gyroscope data 
+		○ Module to get gyroscope readings
+		○ Module to integrate gyroscope readings, remove bias and calculate more accurate positioning 
+	• Display the number of a free booth on the LCD screen
+		○ Module to interface with LCD screen
+		○ Update detection module to decide which booth is empty (number booths and add struct to indicate which are empty)
+	• Play tune when a booth is free 
+		○ Module to play music tune
+		○ Update detection module to play tune when booth is free
+	• Display on PC the current status of every booth and update when a booth empties/gets filled 
+		○ Serial module to interface with PC
+    ○ Python module to display booth status 
