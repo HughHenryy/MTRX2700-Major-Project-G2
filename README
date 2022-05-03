@@ -15,7 +15,8 @@ Major project development stages:
 		○ Module to integrate gyroscope readings, remove bias and calculate more accurate positioning 
 	• Display the number of a free booth on the LCD screen
 		○ Module to interface with LCD screen
-		○ Update detection module to decide which booth is empty (number booths and add struct to indicate which are empty)
+		○ Update detection module to decide which 
+		  booth is empty (number booths and add struct to indicate which are empty)
 	• Play tune when a booth is free 
 		○ Module to play music tune
 		○ Update detection module to play tune when booth is free
