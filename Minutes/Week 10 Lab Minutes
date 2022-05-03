@@ -1,0 +1,45 @@
+Meeting date/time: 3rd May 2022, 02:00 PM
+Location: Discord/lab
+
+Present: 
+  Hugh, Peter, Linclon, Jimmy, Orgil, Linxi
+
+Meeting Purpose: 
+  Finalise our idea and make a start on coding different modules
+
+Activities:
+  1. Talk to tutor about idea, 	
+  2. Brainstorm ideas for major project
+  3. Create a list of modules for our idea
+  
+  Activities throughout the week:
+  Peter - Take hardware, do lidar testing
+        - Stationary Lidar module, 100% complete, best way to get a good results (possible averages)
+        - Rotate lidar
+        - Export Lidar data
+  
+  Linclon:
+    - Gyroscope values
+    - Functions to integrate data
+    
+   Hugh:
+    - Gyroscope module, comparing with stepper motor values
+    - Set the base code for our project
+    
+    Jimmy:
+      - Music module, based on a variable play a tone
+          - Keep module as easy to change as possible for when we get sample data
+     
+    Orgil:
+      - Displaying which number booth is free on the LCD, based on variable
+        - Keep module as easy to change as possible for when we get sample data
+     
+     Linxi
+     - Work with Orgil on LCD display
+     - Possibly research communication with computer to create a user interface on PC
+     
+  
+  
+Future Plans:
+  Check how everyone progressed
+  Set of lidar and gyroscope data values for everyone to being coding based on this
