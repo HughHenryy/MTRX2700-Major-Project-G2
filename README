@@ -37,7 +37,7 @@ Displaying the number of free booth on the LCD screen
 	supermarket to read. 
 	
 	Procedure:
-	1. Declare new function called "lcdDisp(boothNumber)" that takes boothNumber as an input.
+	1. Declare new function called "lcdDisp(int boothNumber)" that takes boothNumber as an input.
 	2. initialize the lcd screen such as setting the data direction of every bit of port K to output by writing DDRK = 0xFF as port K corresponds to lcd screen.
 	3. Declare a function called writeStringLCD(unsigned char * message) that takes any string as an input and displays it on the lcd by reading the characters
 	   byte-by-byte. 
@@ -53,7 +53,7 @@ Displaying the number of free booth on the LCD screen
 	Also, there is an another function called "MSDelay(int itime)" that takes an integer itime as an input and causes delay. 
 	This is useful for displaying the intended message on the lcd screen for a known duration. the function "MSDelay(int itime)" 
 	
-	Thus, the function "lcdDisp(boothNumber)" is able to be called at anytime during the project modules and it can easily integrate with the delay function to 
+	Thus, the function "lcdDisp(int boothNumber)" is able to be called at anytime during the project modules and it can easily integrate with the delay function to 
 	display any message on the lcd screen for as long as we want. 
 	
 	
