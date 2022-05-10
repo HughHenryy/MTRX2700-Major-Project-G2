@@ -1,0 +1,81 @@
+This file contains descriptions of each of the modules making up the major project.
+The purpose of this file is to clarify the purpose of each module, exactly what 
+needs to be coded within each module and the information accessible to other modules
+from the .h file. 
+
+Each module description should contain the following information presented in the 
+format used for the gyroscope module: 
+ - Module name
+ - Files containing the module 
+ - Structs/Functions accessable by other modules (i.e. those in the .h file)
+ - Structs/Functions hidden from other modules (i.e. those in the .c file)
+
+Each struct must be written as it would in your actual code (i.e. it should contain
+all the required variables and descriptions of each variable). Each function should
+contain a brief description of the purpose of the function and a few lines 
+describing at a high level how the function will operate. 
+
+##### -------------------------------------------------------------------- #####
+##### -------------------------------------------------------------------- #####
+
+##### Module: gyroscope reading and data processing #####
+Files: gyro.c, gyro.h
+Module purpose: 
+ - must read data from gyroscope and correct for bias 
+ - must integrate gyroscope data to provide an accurate and live position measurement
+   for the direction the lidar is facing  
+
+
+Interface: 
+
+// struct to store current lidar position
+typedef struct HeadPosition {
+	int position; // angle in degrees representing orientation of lidar
+				  // 0 is directly forward, negative is left, position is right
+} HeadPosition;
+
+
+Hidden functions/structs:
+
+// local struct to store last 100 lidar readings in queue data structure 
+// array "readings" wraps around to form queue structure 
+typedef struct LidarReadings {
+	int readings[100]; // array storing last 100 lidar readings (angular velocity)
+	int *head; // pointer to the most recent reading
+	int *tail; // pointer to the oldest reading 
+
+	int bias[3]; // store bias in each of the three axes 
+}
+
+// interrupt service routine to read gyroscope value and correct for bias  
+void get_reading(*LidarReadings) {
+	// read latest value from lidar and adjust for bias 
+	// add reading to lidar readings struct (overwrite old values if 100 readings are currently stored)
+}
+
+// function to integrate latest lidar readings to get position 
+void update_position(*LidarReadings) {
+	// integrate last 5 readings to get current angle
+	// update HeadPosition struct 
+}
+
+
+int get_lidar_bias(void) {
+	// set servo motors to stop moving 
+	// get 100 gyroscope measurements and average to get bias
+	// set bias values in the LidarReadings struct 
+}
+
+ #### -------------------------------------------------------------------- #####
+
+##### Module: lidar reading and processing (laser.c) #####
+Interface: 
+
+
+Module: serial (simple_serial.c)
+Interface: 
+// print out string to the serial port
+
+
+
+Module: 
