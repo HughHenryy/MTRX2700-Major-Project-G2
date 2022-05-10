@@ -16,6 +16,9 @@
 #include "gyro.h"
 
 
+// INSERT CHANGE HERE
+
+
 void printErrorCode(IIC_ERRORS error_code) {
   char buffer[128];  
   switch (error_code) {
