@@ -39,7 +39,7 @@ Displaying the number of free booth on the LCD screen
 	Procedure:
 	1. Declare new function called "lcdDisp(boothNumber)" that takes boothNumber as an input.
 	2. initialize the lcd screen such as setting the data direction of every bit of port K to output by writing DDRK = 0xFF as port K corresponds to lcd screen.
-	3. Declare a function called writeStringLCD(unsigned * message) that takes any string as an input and displays it on the lcd by reading the characters
+	3. Declare a function called writeStringLCD(unsigned char * message) that takes any string as an input and displays it on the lcd by reading the characters
 	   byte-by-byte. 
 	4. Declare a function called writeSIntLCD(int number) that takes any integer as an input and displays it on the lcd screen. 
 	5. Using functions writeStringLCD and writeSIntLCD to combine them to display the intended text with any integer afterwards.
