@@ -1,0 +1,48 @@
+Orientation Using Servo Motors:
+- Get values of rotation directly from what you tell it (I think)
+- Calibrate by setting ZERO_ELEVATION_DUTY and ZERO_AZIMUTH_DUTY
+
+Questions
+	- how does Stewart move the motor in his serial example
+	- What is the limitation of the motors rotation 
+
+
+
+Orientation Using Gyro
+- Obtain raw data
+- Use proper constant to integrate information to obtain orientation
+- Remove bias in the gyro
+- scale values???
+- calibration (set zero points??)
+
+######### NOTE: can check orientation via earths magnetic field (using magnetic values) 
+#########	or atleast angle of change
+
+
+
+######################## BIAS ##########################
+- Gyroscope measure rotation about a point 
+- Acceleromerter measures displacement'
+
+Bias:  initial zero reading of the gyroscope will cause drift over time due 
+	to integration of inherent imperfections and noise within the device. 
+	Bias repeatability can be calibrated across the known temperature range of the IMU
+
+Drift error: gyroscope drift is mainly due to the integration of two components: 
+	a slow changing, near-dc variable called bias instability and 
+	a higher frequency noise variable called angular random walk (ARW)
+
+
+- Drift error can be partially filtered out using a low pass or kalman filter
+
+- Also drift error can be mitigated by use of the magnetic field
+- Can also null gyroscope offset to zero when you know the gyroscope is stationary
+- The constant bias error of a gyroscope can be measured by taking the average of the output over a long period of time while the device is not rotating
+
+REFERENCE: https://www.analog.com/en/analog-dialogue/raqs/raq-issue-139.html#:~:text=Gyroscopes%20are%20subject%20to%20bias,temperature%20range%20of%20the%20IMU.
+
+
+How to integrate gyroscope data
+-https://stackoverflow.com/questions/31278784/integrate-readings-from-a-3-axis-gyroscope
+
+- Find gain pg 10 datasheet
