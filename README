@@ -23,3 +23,38 @@ Major project development stages:
 	• Display on PC the current status of every booth and update when a booth empties/gets filled 
 		○ Serial module to interface with PC
     		○ Python module to display booth status 
+
+Displaying the number of free booth on the LCD screen
+	
+	Depending on the measurement of the gyro and lidar sensors, the number of free both should be displayed on the lcd screen whenever there is an empty booth
+	detected. However, the project is designed to be modular as the integration of displaying on lcd part and the measurements or sensor reading part should be
+	flexible enough so that, it alows more modifiability and flexibility. Therefore, lcd module should be able to be called at anytime within the project as it is 
+	the reason to make it as a separate function that has particular input. In this case, the function is called "lcdDisp(int boothNumber)". 
+	
+	Input: The input of the function lcdDisp(boothNumber) is integer "boothNumber". 
+	Depending on the results of sensor readings and whenever there is an empty booth detected, this function gets the booth number as an input and outputs that 
+	number. Thus, there is a string before the booth number such as "EMPTY BOOTH:" as this allows more convenience to the end-user or the consumers of the 
+	supermarket to read. 
+	
+	Procedure:
+	1. Declare new function called "lcdDisp(boothNumber)" that takes boothNumber as an input.
+	2. initialize the lcd screen such as setting the data direction of every bit of port K to output by writing DDRK = 0xFF as port K corresponds to lcd screen.
+	3. Declare a function called writeStringLCD(unsigned * message) that takes any string as an input and displays it on the lcd by reading the characters
+	   byte-by-byte. 
+	4. Declare a function called writeSIntLCD(int number) that takes any integer as an input and displays it on the lcd screen. 
+	5. Using functions writeStringLCD and writeSIntLCD to combine them to display the intended text with any integer afterwards.
+	
+	Example: 
+	An assumption that there is an empty booth detected at booth number:3. 
+		The input in this case is int boothNumber=3.
+		The funtion lcdDisp(boothNumber) is executed
+	 	The output or the message on the lcd screen should look like - EMPTY BOOTH:3 
+		
+	Also, there is an another function called "MSDelay(int itime)" that takes an integer itime as an input and causes delay. 
+	This is useful for displaying the intended message on the lcd screen for a known duration. the function "MSDelay(int itime)" 
+	
+	Thus, the function "lcdDisp(boothNumber)" is able to be called at anytime during the project modules and it can easily integrate with the delay function to 
+	display any message on the lcd screen for as long as we want. 
+	
+	
+	
