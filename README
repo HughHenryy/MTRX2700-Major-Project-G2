@@ -46,8 +46,8 @@ Displaying the number of free booth on the LCD screen
 	
 	Example: 
 	An assumption that there is an empty booth detected at booth number:3. 
-		The input in this case is int boothNumber=3.
-		The funtion lcdDisp(boothNumber) is executed
+		The input in this case is int boothNumber=3;
+		The funtion lcdDisp(int boothNumber) is executed;
 	 	The output or the message on the lcd screen should look like - EMPTY BOOTH:3 
 		
 	Also, there is an another function called "MSDelay(int itime)" that takes an integer itime as an input and causes delay. 
