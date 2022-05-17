@@ -20,6 +20,9 @@
 // ANOTHER COMMENT
 
 
+// ligma
+
+
 void printErrorCode(IIC_ERRORS error_code) {
   char buffer[128];  
   switch (error_code) {
@@ -59,43 +62,7 @@ void printErrorCode(IIC_ERRORS error_code) {
   SerialOutputString(buffer, &SCI1);
 }
 
-
-/*
 void main(void) {
-  IIC_ERRORS error_code = NO_ERROR;
-  char buffer[128]; 
-  float arr[3];
-  SerialInitialise(BAUD_9600, &SCI1);
-  
-  error_code = iicSensorInit();
-  
-  // write the result of the sensor initialisation to the serial
-  if (error_code == NO_ERROR) {
-    sprintf(buffer, "NO_ERROR\r\n");
-    SerialOutputString(buffer, &SCI1);
-  } else {
-    sprintf(buffer, "ERROR %d\r\n");
-    SerialOutputString(buffer, &SCI1);
-  }
-
-  _DISABLE_COP();
-  
-  initialise_gyro();
-
-  for (;;) {
-    get_orientation(arr);
-
-    // format the string of the sensor data to go the the serial    
-    sprintf(buffer, "%f %f %f\n", arr[0], arr[1], arr[2]);
-    
-    // output the data to serial
-    SerialOutputString(buffer, &SCI1);
-  }
-}
-*/
-
-void main(void) {
-  float arr[3];
 
   AccelRaw read_accel;
   AccelScaled scaled_accel;
@@ -114,7 +81,7 @@ void main(void) {
   #ifndef SIMULATION_TESTING
 
   // make sure the board is set to 24MHz
-  // this is needed only when not using the debugger
+  //  this is needed only when not using the debugger
   PLL_Init();
 
   // initialise PWM
@@ -147,21 +114,10 @@ void main(void) {
   #endif
 
   Init_TC6();
-
-
-  initialise_gyro();  
+  
 	EnableInterrupts;
   //COPCTL = 7;
   _DISABLE_COP();
-  
-
-  
-  for (;;) {
-    get_orientation(arr);
-    
-    sprintf(buffer, "%f %f %f\r\n", arr[0], arr[1], arr[2]);
-    SerialOutputString(buffer, &SCI1);  
-  }
     
   for(;;) {
   
@@ -207,8 +163,8 @@ void main(void) {
     SerialOutputString(buffer, &SCI1);
     
     
-    //_FEED_COP(); /* feeds the dog */ /* 
+    //_FEED_COP(); /* feeds the dog */
   } /* loop forever */
   
-  /* please make sure that you never leave main */ 
+  /* please make sure that you never leave main */
 }
