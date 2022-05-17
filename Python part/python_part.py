@@ -1,4 +1,4 @@
-# This is a Python script to parse the example messages from a file.
+#This python code will display the visualization of the simplified radar chart and the state of each booth
 
 import time
 import serial
@@ -7,7 +7,7 @@ import traceback
 import pygame
 import math
 import sys
-
+import random
 
 MSG_HEADER_SIZE = 16
 LIDAR_REF       = 70
@@ -24,10 +24,8 @@ Booth3_angle_end=113
 Booth4_angle_start=138
 Booth4_angle_end=148
 
-Booth1=0
-Booth2=0
-Booth3=0
-Booth4=0
+boothstauts=[0,0,0,0]
+
 def read_packet(f):
     header_bytes = f.read(MSG_HEADER_SIZE)
 
@@ -51,12 +49,17 @@ def read_packet(f):
         data = struct.unpack(">hhhhH", bytes)
         print("DATA message: " + "Distance: "+str(data[1]) + ", " + "Angle: "+str(data[2]) +" time=" + str(data[4]))
         # Position  angle           # Lidar data                #None
+
+        # angle=random.randint(0,180)       #Without Dragon board testing
+        # lidar=random.randint(60,100)
+        # data1=[0,lidar,angle]
+
         visualization(data)
     elif message_type == b"buttons":
         buttons_bytes = f.read(header_data[2])
         print("buttons message: " + str(hex(buttons_bytes[1])) + ", time=" + str(buttons_bytes[2]))
 
-    return
+    return True
 
 def visualization(data):
     # Initialize pygame
@@ -103,48 +106,59 @@ def visualization(data):
 
         for i in range(40):
             if list_line[i][0] < LIDAR_REF:  # The distance is less than the reference value, red line
-                pygame.draw.line(screen, red_color[i], (600, 620),
-                                 (600 - 600 * math.cos(list_line[i][1]), 620 - 600 * math.sin(list_line[i][1])), 3)
+                pygame.draw.line(screen, red_color[i], (600, 620),(600 - 600 * math.cos(list_line[i][1]), 620 - 600 * math.sin(list_line[i][1])), 3)
             else:
-                pygame.draw.line(screen, green_color[i], (600, 620),
-                                 (600 - 600 * math.cos(list_line[i][1]), 620 - 600 * math.sin(list_line[i][1])), 3)
+                pygame.draw.line(screen, green_color[i], (600, 620),(600 - 600 * math.cos(list_line[i][1]), 620 - 600 * math.sin(list_line[i][1])), 3)
+
+
 
         if distance < LIDAR_REF:  # Corresponding distance and warning text
             screen.blit(pygame.font.Font(None, 25).render("Find", 1, "red"), (200, 630))
             screen.blit(pygame.font.Font(None, 25).render(str(distance) + "cm", 1, "green"),(490, 630))
-            if Booth1_angle_start<data[2]<Booth1_angle_end:
-                Booth1=1
-                screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (180, 660))
-            elif Booth2_angle_start<data[2]<Booth2_angle_end:
-                Booth2=1
-                screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (380, 660))
-            elif Booth3_angle_start<data[2]<Booth3_angle_end:
-                Booth3=1
-                screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (580, 660))
-            elif Booth4_angle_start<data[2]<Booth4_angle_end:
-                Booth4=1
-                screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (780, 660))
-
 
         else:
             screen.blit(pygame.font.Font(None, 25).render("Not Find ", 1, "green"), (180, 630))
             screen.blit(pygame.font.Font(None, 25).render("xx", 1, "green"), (490, 630))
-            if Booth1_angle_start<data[2]<Booth1_angle_end:
-                Booth1=0
+
+
+
+        if Booth1_angle_start<data[2]<Booth1_angle_end:
+            if distance < LIDAR_REF:
+                boothstauts[0]=1
             else:
-                screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (180, 660))
-            if Booth2_angle_start<data[2]<Booth2_angle_end:
-                Booth2=0
+                boothstauts[0] = 0
+        elif Booth2_angle_start < data[2] < Booth2_angle_end:
+            if distance < LIDAR_REF:
+                boothstauts[1]=1
             else:
-                screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (380, 660))
-            if Booth3_angle_start<data[2]<Booth3_angle_end:
-                Booth3=0
+                boothstauts[1]=0
+        elif Booth3_angle_start<data[2]<Booth3_angle_end:
+            if distance < LIDAR_REF:
+                boothstauts[2]=1
             else:
-                screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (580, 660))
-            if Booth4_angle_start<data[2]<Booth4_angle_end:
-                Booth4=0
+                boothstauts[2]=0
+        elif Booth4_angle_start < data[2] < Booth4_angle_end:
+            if distance < LIDAR_REF:
+                boothstauts[3] = 1
             else:
-                screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (780, 660))
+                boothstauts[3] = 0
+
+        if boothstauts[0] == 1:
+            screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (180, 660))
+        else:
+            screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (180, 660))
+        if boothstauts[1] == 1:
+            screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (380, 660))
+        else:
+            screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (380, 660))
+        if boothstauts[2] == 1:
+            screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (580, 660))
+        else:
+            screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (580, 660))
+        if boothstauts[3] == 1:
+            screen.blit(pygame.font.Font(None, 25).render("Fall ", 1, (251, 10, 10)), (780, 660))
+        else:
+            screen.blit(pygame.font.Font(None, 25).render("Empyt", 1, (10, 10, 251)), (780, 660))
 
         #########################################################################################################
         # Background for making radar maps
@@ -190,7 +204,7 @@ def visualization(data):
         pygame.display.update()
         # Dragon board running speed
         pygame.time.Clock().tick(24*10^6)
-
+        return True
 
 
 def read_serial(com_port):
