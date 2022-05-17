@@ -50,10 +50,11 @@ def read_packet(f):
         print("DATA message: " + "Distance: "+str(data[1]) + ", " + "Angle: "+str(data[2]) +" time=" + str(data[4]))
         # Position  angle           # Lidar data                #None
 
-        # angle=random.randint(0,180)       #Without Dragon board testing
-        # lidar=random.randint(60,100)
-        # data1=[0,lidar,angle]
-
+        # for i in range(20, 160):
+        #     angle = i                          #Without Dragon board testing
+        #     lidar = random.randint(15, 30)
+        #     data1 = [0, lidar, angle]
+        #     visualization(data1)
         visualization(data)
     elif message_type == b"buttons":
         buttons_bytes = f.read(header_data[2])
