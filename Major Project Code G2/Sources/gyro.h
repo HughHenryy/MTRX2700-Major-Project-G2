@@ -13,8 +13,14 @@ typedef struct GyroScaled {
   float z;
 } GyroScaled;
 
+void initialise_gyro(void);
+
+void get_orientation(float *arr); 
+
 // NOTE: some function is required to convert between raw and 
 //       scaled values. Also, calibration and removing the bias is
 //       needed
+
+__interrupt void TC5_ISR(void);
 
 #endif
