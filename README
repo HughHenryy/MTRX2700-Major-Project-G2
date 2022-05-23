@@ -56,5 +56,17 @@ Displaying the number of free booth on the LCD screen
 	Thus, the function "lcdDisp(int boothNumber)" is able to be called at anytime during the project modules and it can easily integrate with the delay function to 
 	display any message on the lcd screen for as long as we want. 
 	
-	
+	The function of the music module is that, it will play short music if there is an empty booth has been detected. 
+
+Music module
+
+The implementation for the music module is set the corresponding notes to play the music. 
+The music note contains a stop number which is 0 to stop playing the music. 
+Therefore, by enable the interrupt for the output compare and built the corresponding delay functions by using time overflow, the music should be played regularly. 
+Therefore, the time overflow flag.  by setting the prescaler to 0, the time will overflow after 2.73 mil seconds, 
+therefore, 1 second will loop through 366 times after the time overflow flag is raised. 
+Then, Therefore, each string in the predefined song will be played for 1 second.
+After loop through all the string in the song, the final character is set to be 0 and to stop the music. 
+If the 0 number detected, the music will be stopped by disconnect communication with the speaker. 
+
 	
