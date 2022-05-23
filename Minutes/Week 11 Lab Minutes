@@ -1,0 +1,19 @@
+
+Meeting date/time: 10th May 2022, 02:00 PM
+Location: Discord/lab
+
+Present: 
+  All
+
+Meeting Purpose: 
+  Start testing and finalising the lidar measurement module
+  Check on how the online people are going, implement stewart's python code
+
+Activities:
+  1. Meaure and test Lidar readings
+  2. Debugg lidar interrupt with serial
+  3. Test Gyro module so far, try to fix bias
+  
+  
+Future Plans:
+  Have each module finished and test next week
